@@ -1,0 +1,36 @@
+<section id="login">
+  <div fxLayoutAlign="center center" class="login">
+    <mat-card class="login-container">
+      <mat-card-header fxLayoutAlign="center center">
+          <img src="assets/images/logo.png" alt="">
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-title fxLayoutAlign="center center" class="title">ВХОД</mat-card-title>
+        <mat-form-field class="input-form" appearance="outline">
+          <input matInput type="text" #login placeholder="Логин">
+          <button matSuffix mat-icon-button (click)="login.value = ''">
+            <img src="assets/images/close.png" alt="">
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="outline">
+          <input matInput [type]="hide ? 'password' : 'text'" #password placeholder="Пароль">
+          <button matSuffix mat-icon-button (click)="password.value = ''">
+            <img src="assets/images/close.png" alt="">
+          </button>
+        </mat-form-field>
+
+        <div fxLayoutAlign="space-between center" class="remember">
+          <mat-checkbox color="primary">Запомнить меня</mat-checkbox>
+          <button mat-mini-fab color="primary">
+            <mat-icon color="basic" (click)="hide = !hide">vpn_key</mat-icon>
+          </button>
+        </div>
+
+        <mat-card-actions fxLayoutAlign="center">
+          <button mat-flat-button class="btn" color="primary">Поиск</button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

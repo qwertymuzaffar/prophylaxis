@@ -1,0 +1,152 @@
+<section id="directory">
+  <div class="container">
+    <mat-card fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between" class="filter-nav">
+      <!--Справочник-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Справочник</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>Реестр детей</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+      <!--Образовательное учреждение-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Образовательное учреждение</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>Школа №74</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+          <p>
+            <span>Гимназия №23</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+        <!--Группа риска СОП-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Группа риска СОП</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>Высокая</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+      <!--Поиск по фамилии-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Поиск по фамилии</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+      </div>
+      <!--Кнопка поиска-->
+      <div class="filter-nav_item-btn">
+        <button mat-flat-button class="btn" color="primary">Поиск</button>
+        <p>Расширенный поиск</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="directory-content">
+      <div fxLayoutAlign="space-between center" class="tool-panel">
+        <div fxLayoutAlign="space-between center" fxLayoutGap="15px" class="title">
+          <img src="assets/images/reestr2.png" alt="">
+          <span>реестр детей</span>
+        </div>
+        <div fxLayoutAlign="flex-end" class="tool-panel-right">
+          <div class="download">
+            <img src="assets/images/download.png" alt="">
+          </div>
+          <div class="print">
+            <img src="assets/images/print.png" alt="">
+          </div>
+          <div class="excel">
+            <img src="assets/images/excel.png" alt="">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="numbers">
+            <span>Кол-во записей: 0</span>
+            <mat-form-field appearance="outline" class="input-form select-form">
+              <mat-select placeholder="">
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span>из 0</span>
+          </div>
+          <div fxLayoutGap="10px" fxLayoutAlign="space-between center" class="numbers-2">
+            <span>Кол-во:</span>
+            <mat-form-field appearance="outline" class="input-form select-form">
+              <mat-select placeholder="">
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="edit-btn" fxLayoutAlign="center center">
+            <button mat-flat-button class="btn" color="primary">Создать</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="directory-table">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- fullName Column -->
+          <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ФИО </th>
+            <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+          </ng-container>
+
+          <!-- dateOfBirth Column -->
+          <ng-container matColumnDef="dateOfBirth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата рождения </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+          </ng-container>
+
+          <!-- placeOfStudy Column -->
+          <ng-container matColumnDef="placeOfStudy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Место учебы </th>
+            <td mat-cell *matCellDef="let element"> {{element.placeOfStudy}} </td>
+          </ng-container>
+
+          <!-- riskGroup Column -->
+          <ng-container matColumnDef="riskGroup">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Группа риска </th>
+            <td fxLayoutAlign="start center" fxLayoutGap="20px" mat-cell *matCellDef="let element">
+              <span class="risk-group"></span>
+              <span>{{element.riskGroup}}</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </div>
+</section>

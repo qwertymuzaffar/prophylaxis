@@ -1,0 +1,27 @@
+
+$mat-custom-primary-color: (
+  50: #218dc6,
+  100: #2375a0,
+  contrast: (
+    50: white,
+    100: white
+  )
+);
+
+$mat-custom-accent-color: (
+  50: #00ac60,
+  100: #008c4e,
+  contrast: (
+    50: white,
+    100: white
+  )
+);
+
+$mat-custom-warn-color: (
+  50: #f8917d,
+  100: #f8917d,
+  contrast: (
+    50: white,
+    100: white,
+  )
+);

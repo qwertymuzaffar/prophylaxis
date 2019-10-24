@@ -1,0 +1,203 @@
+@import "../../sass/mat-form-field";
+@import "../../sass/button";
+
+:host ::ng-deep {
+  #directory {
+    margin-bottom: 20px;
+
+    .filter-nav {
+      font-family: 'Open Sans';
+      margin-top: 18px;
+      padding: 10px 20px 20px 20px;
+
+      .filter-nav-item {
+        width: 20%;
+
+        .title {
+          margin-bottom: 6px;
+          font-size: 12px;
+          font-weight: 400;
+          color: #218dc6;
+        }
+
+        .filter-nav_choice {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          p {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 400;
+            color: #262626;
+            margin-top: 5px;
+
+            span {
+              margin-right: 3px;
+            }
+
+            img {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .filter-nav_item-btn {
+        text-align: center;
+        margin-top: 6px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #218dc6;
+        text-decoration: underline;
+
+        button {
+          margin-top: 16px;
+        }
+
+        p {
+          margin-top: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .directory-content {
+          margin-top: 17px;
+
+          .tool-panel {
+            flex: auto;
+            height: 35px;
+
+            .title {
+              font: 16px 'Open Sans';
+              font-weight: 600;
+              text-transform: uppercase;
+              color: #218dc6;
+            }
+
+            .download, .print, .excel {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 6px 18px;
+              border-right: 1px solid #e9effa;
+
+              img {
+                cursor: pointer;
+              }
+            }
+
+        .numbers, .excel, .numbers-2 {
+          border-right: 1px solid #e9effa;
+        }
+
+        .numbers, .numbers-2 {
+          padding: 0 18px;
+
+          span {
+            font: 12px 'Open Sans';
+            font-weight: 400;
+            color: #262626;
+          }
+        }
+
+        .numbers {
+          width: 300px;
+
+          mat-form-field {
+            width: 100px;
+          }
+        }
+
+        .numbers-2 {
+          width: 200px;
+          margin-right: 20px;
+
+          mat-form-field {
+            width: 100px;
+          }
+        }
+
+        .edit-btn p {
+          font: 12px 'Open Sans';
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      .directory-table {
+        margin-top: 15px;
+
+        table {
+          width: 100%;
+
+          .mat-sort-header-container {
+            justify-content: space-between;
+          }
+
+          tr {
+            &:nth-child(even) {
+              background-color: #f4f7fc;
+            }
+
+            th {
+              padding: 15px;
+              background-color: #218dc6;
+
+              &:first-child {
+                border-top-left-radius: 5px;
+              }
+
+              &:last-child {
+                border-top-right-radius: 5px;
+              }
+
+              .mat-sort-header-container {
+                font: 14px 'Open Sans';
+                color: #ffffff;
+
+                .mat-sort-header-stem, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle, .mat-sort-header-pointer-left {
+                  background-color: #fff;
+                }
+              }
+            }
+
+            td {
+              font: 14px 'Open Sans';
+              padding: 30px 18px;
+              border-right: 1px solid #e9effa;
+
+              &:last-child {
+                border-right: 0;
+              }
+
+              &.mat-cell {
+                border-bottom-width: 0;
+              }
+
+              &.mat-column-select {
+                width: 100px;
+                vertical-align: middle;
+                text-align: center;
+              }
+
+              .risk-group{
+                display: block;
+                width: 57px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: #ff0000;
+              }
+            }
+          }
+
+          .mat-header-row {
+            height: 45px;
+          }
+        }
+      }
+    }
+  }
+}

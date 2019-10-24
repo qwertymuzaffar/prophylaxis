@@ -1,0 +1,12 @@
+@import '../../../node_modules/@angular/material/theming';
+@import "color";
+@include mat-core();
+
+// below creates a primary palette with three shades of blue
+$my-primary: mat-palette($mat-custom-primary-color, 50, 100);
+$my-app-accent:  mat-palette($mat-custom-accent-color, 50, 100);
+$my-app-warn:    mat-palette($mat-custom-warn-color, 50, 100);
+
+$my-app-theme: mat-light-theme($my-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);

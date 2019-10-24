@@ -1,0 +1,50 @@
+ <header id="main-header">
+    <div class="main-header">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="container">
+        <div class="header-logo">
+          <img src="assets/images/logo.png" alt="">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="header_user-block">
+          <div class="user-block-item">
+            <img src="assets/images/quest-icon.png" alt="Вопрос">
+          </div>
+          <div fxLayout="row" class="user-not user-block-item">
+            <div class="user-not-icon">
+              <img src="assets/images/col-icon.png" alt="Оповещения">
+            </div>
+            <div class="user-not-number">
+              <span>+1</span>
+            </div>
+          </div>
+          <div class="user-mail user-block-item">
+            <img src="assets/images/mail-icon.png" alt="Сообщения">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="profile user-block-item">
+            <p class="profile-name">Смирнов А.В.</p>
+            <div class="profile-icon">
+              <img src="assets/images/user-icon.png" alt="Фото">
+            </div>
+            <div class="profile-dropdown-icon">
+              <img src="assets/images/arrow-down.png" alt="Стрелка">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div id="main-nav">
+     <div class="container">
+       <nav mat-tab-nav-bar>
+         <a mat-tab-link
+            *ngFor="let link of navLinks"
+            [routerLink]="link.path"
+            routerLinkActive #rla="routerLinkActive"
+            [active]="rla.isActive"
+            [class.active]="rla.isActive"
+            [routerLinkActiveOptions]="{exact: true}">
+            <img src="assets/images/{{link.icon}}.png" alt="">
+            <span>{{link.label}}</span>
+         </a>
+       </nav>
+     </div>
+   </div>
+  </header>

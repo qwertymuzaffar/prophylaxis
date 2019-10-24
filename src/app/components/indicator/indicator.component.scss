@@ -1,0 +1,120 @@
+@import "../../sass/mat-form-field";
+@import "../../sass/button";
+
+:host ::ng-deep {
+  #indicator {
+    .tool-panel {
+      flex: auto;
+      height: 35px;
+
+      .download, .print, .excel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 18px;
+        border-right: 1px solid #e9effa;
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .numbers, .excel, .numbers-2 {
+        border-right: 1px solid #e9effa;
+      }
+
+      .numbers, .numbers-2 {
+        padding: 0 18px;
+
+        span {
+          font: 12px 'Open Sans';
+          font-weight: 400;
+          color: #262626;
+        }
+      }
+
+      .numbers {
+        width: 300px;
+
+        mat-form-field {
+          width: 100px;
+        }
+      }
+
+      .numbers-2 {
+        width: 200px;
+        margin-right: 20px;
+
+        mat-form-field {
+          width: 100px;
+        }
+      }
+
+      .edit-btn p {
+        font: 12px 'Open Sans';
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .indicator-table {
+      margin-top: 15px;
+
+      table {
+        width: 100%;
+
+        .mat-sort-header-container {
+          justify-content: space-between;
+        }
+
+        tr {
+          &:nth-child(odd) {
+            background-color: #f4f7fc;
+          }
+
+          th {
+            padding: 15px;
+            background-color: #218dc6;
+
+            .mat-sort-header-container {
+              font: 14px 'Open Sans';
+              color: #ffffff;
+
+              .mat-sort-header-stem, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle, .mat-sort-header-pointer-left {
+                background-color: #fff;
+              }
+            }
+          }
+
+          td {
+            font: 14px 'Open Sans';
+            padding: 10px 15px;
+            border-right: 1px solid #e9effa;
+
+            &:first-child{
+              width: 50%;
+            }
+
+            &:last-child{
+              border-right: 0;
+            }
+
+            &.mat-cell {
+              border-bottom-width: 0;
+            }
+
+            &.mat-column-select {
+              width: 100px;
+              vertical-align: middle;
+              text-align: center;
+            }
+          }
+        }
+
+        .mat-header-row{
+          height: 45px;
+        }
+      }
+    }
+  }
+}

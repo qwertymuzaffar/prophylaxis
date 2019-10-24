@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  .btn {
+    font: 12px "Open Sans";
+    width: 140px;
+    height: 30px;
+    line-height: 0;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 4px 12.2px 0.8px rgba(46, 125, 167, 0.38), 0 0 7.7px 1.4px rgba(81, 161, 204, 0.23) !important;
+    -moz-box-shadow: 0 4px 12.2px 0.8px rgba(46, 125, 167, 0.38), 0 0 7.7px 1.4px rgba(81, 161, 204, 0.23) !important;
+    box-shadow: 0 4px 12.2px 0.8px rgba(46, 125, 167, 0.38), 0 0 7.7px 1.4px rgba(81, 161, 204, 0.23) !important;
+  }
+}

@@ -1,0 +1,10 @@
+<h3 mat-dialog-title>Комментария</h3>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" class="comment-field">
+    <textarea matInput rows="10" placeholder="Comment" #comment>{{data}}</textarea>
+  </mat-form-field>
+</div>
+<div fxLayoutAlign="end" fxLayoutGap="10px" mat-dialog-actions class="btns">
+  <button mat-flat-button class="btn" color="accent" [mat-dialog-close]="comment.value" cdkFocusInitial>Сохранить</button>
+  <button mat-flat-button class="btn cancel" (click)="onNoClick()">Отменить</button>
+</div>

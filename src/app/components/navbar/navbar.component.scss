@@ -1,0 +1,76 @@
+.main-header {
+  background-color: #218dc6;
+
+  .container {
+    height: 45px;
+
+    .user-block-item {
+      padding: 5px 18px;
+      height: 100%;
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      border-right: 1px solid #7ebdde;
+      cursor: pointer;
+    }
+
+    .user-not {
+      .user-not-number {
+        margin: -8px 0 0 1px;
+      }
+      .user-not-number span {
+        display: block;
+        padding: 4px 3px;
+        font: 9px/9px open-sans, sans-serif;
+        font-weight: 400;
+        color: white;
+        background-color: #ef4a46;
+        border-radius: 50%;
+      }
+    }
+
+    .user-block-item:last-child {
+      border-right: 0;
+    }
+
+    .profile {
+      .profile-name {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .profile-dropdown-icon {
+        margin-top: -10px;
+      }
+    }
+  }
+}
+
+#main-nav{
+  background-color: #fff;
+
+  a {
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    font-weight: normal;
+
+    img {
+      margin-right: 15px;
+    }
+  }
+
+  .active {
+    background-color: #f4f7fc;
+  }
+}
+
+:host ::ng-deep {
+  mat-ink-bar {
+    height: 4px;
+  }
+
+  .mat-tab-header, .mat-tab-nav-bar{
+    border-bottom: 0;
+  }
+}

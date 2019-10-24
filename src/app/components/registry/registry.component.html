@@ -1,0 +1,153 @@
+<section id="reestr">
+  <div class="container">
+    <mat-card fxLayout="row" class="user-info">
+      <div fxLayoutAlign="center center" class="user-info-item arrow-back">
+        <img src="assets/images/arrow-back.png" alt="">
+      </div>
+      <div fxLayoutAlign="center center" fxLayoutGap="17px" class="user-info-item user-info-name">
+        <div class="user-info-name-icon">
+          <img src="assets/images/name-icon.png" alt="">
+        </div>
+        <div class="user-info-name-name">
+          <p class="name">Иванов Сергей Захарович</p>
+          <p class="age">14 лет</p>
+        </div>
+      </div>
+      <div class="user-info-item user-info-classroom">
+        <p class="number">8A</p>
+        <p class="desc">класс</p>
+      </div>
+      <div fxLayoutAlign="center center" class="user-info-item user-risk">
+        <div class="user-risk_item-risk">
+          <span class="risk"></span>
+          <p>В группе риска СОП</p>
+        </div>
+        <div class="user-risk_item-risk_quest">
+          <img src="assets/images/icon-quest.png" alt="">
+          <span class="tooltip">
+            <p><span></span>
+              <span>Вне группы риска</span></p>
+            <p><span></span>
+              <span>Низкий риск</span></p>
+            <p><span></span>
+              <span>Средний риск</span></p>
+            <p><span></span>
+              <span>Высокий риск</span></p>
+          </span>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="user_full-info">
+      <mat-tab-group mat-stretch-tabs selectedIndex="1" class="user-info-stretched-tabs">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <img src="assets/images/card.png" alt="">
+            <span class="stretched-tab-label">Общая информация</span>
+          </ng-template>
+          <div fxLayout="row" fxLayoutGap="20px" class="user_full-info-content">
+            <div fxFlex="1 1 50%" class="user-info-content-left">
+              <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef> Параметры </th>
+                  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Данные </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+
+            <div fxFlex="1 1 50%" fxLayout="column" fxLayoutGap="20px" class="user-info-content-right">
+              <table mat-table [dataSource]="educationalInstitutions">
+                <ng-container matColumnDef="desc">
+                  <th mat-header-cell *matHeaderCellDef> Образовательные учреждения </th>
+                  <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+                </ng-container>
+                <ng-container matColumnDef="school">
+                  <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let element"> {{element.school}} </td>
+                </ng-container>
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="educationalInstitutionsColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: educationalInstitutionsColumns;"></tr>
+              </table>
+
+              <table mat-table [dataSource]="family">
+                <ng-container matColumnDef="family">
+                  <th mat-header-cell *matHeaderCellDef>Член семьи</th>
+                  <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fullName">
+                  <th mat-header-cell *matHeaderCellDef>ФИО</th>
+                  <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="work">
+                  <th mat-header-cell *matHeaderCellDef>Работа</th>
+                  <td mat-cell *matCellDef="let element"> {{element.work}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="familyColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: familyColumns;"></tr>
+              </table>
+
+              <table mat-table [dataSource]="socialSupport">
+                <ng-container matColumnDef="desc">
+                  <th mat-header-cell *matHeaderCellDef>Меры социальное поддержки</th>
+                  <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="socialSupportColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: socialSupportColumns;"></tr>
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <img src="assets/images/location.png" alt="">
+            <span class="stretched-tab-label">Индикаторы</span>
+          </ng-template>
+          <div class="user_full-info-content">
+            <app-indicator></app-indicator>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <img src="assets/images/edit-copy.png" alt="">
+            <span class="stretched-tab-label">Постановка на учет</span>
+          </ng-template>
+          <div class="user_full-info-content">
+            Content 3
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <img src="assets/images/small-calendar.png" alt="">
+            <span class="stretched-tab-label">ИПК с 20.10.2018</span>
+          </ng-template>
+          <div class="user_full-info-content">
+            Content 4
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <img src="assets/images/tap.png" alt="">
+            <span class="stretched-tab-label">Правонарушения</span>
+          </ng-template>
+          <div class="user_full-info-content">
+            Content 5
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</section>

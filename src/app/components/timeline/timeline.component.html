@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="timeline">
+  <div fxLayoutAlign="space-between center" class="timeline-content">
+    <div fxLayoutAlign="center center" class="past-date" (click)="goToDate('back')">
+      <img src="assets/images/arrow.png" alt="">
+    </div>
+    <div fxLayout="row" class="current-date">
+      <div fxLayoutAlign="start center" class="week">
+        <div class="day"
+             *ngFor="let date of timelineData; let i = index"
+             (click)="getDate(date.day)"
+             [ngStyle]="{'background-color': date.color}">
+          <span *ngIf="i % 7 === 0" class="start-date">{{date.day}}</span>
+          <span *ngIf="(i + 1) % 7 === 0" class="end-date">{{date.day}}</span>
+          <span class="tooltip">{{date.desc}}</span>
+        </div>
+      </div>
+
+    </div>
+    <div fxLayoutAlign="center center" class="future-date" (click)="goToDate('next')">
+      <img src="assets/images/arrow.png" alt="">
+    </div>
+  </div>
+  <div fxLayoutAlign="center center" class="timeline-calendar">
+    <mat-form-field class="date-pick">
+      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" placeholder="Choose a date">
+      <mat-datepicker class="mat-datepicker"  #picker></mat-datepicker>
+    </mat-form-field>
+    <img src="assets/images/calendar.png" alt="" (click)="picker.open()">
+  </div>
+</div>

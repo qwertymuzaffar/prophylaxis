@@ -1,0 +1,125 @@
+@import "../../sass/tooltip";
+
+:host ::ng-deep {
+  .timeline {
+    height: 55px;
+    margin-bottom: 15px;
+
+    .timeline-content, .timeline-calendar {
+      background-color: #f3f6fb;
+      border-radius: 3px;
+      border: 1px solid #e9effa;
+      height: 100%;
+    }
+
+    .timeline-content {
+      flex: auto;
+
+      .past-date, .future-date {
+        width: 40px;
+        cursor: pointer;
+        height: 100%;
+      }
+
+      .future-date {
+        transform: rotate(180deg);
+      }
+
+      .current-date {
+        flex: auto;
+        border-right: 1px solid #e9effa;
+        border-left: 1px solid #e9effa;
+        padding: 10px;
+        margin-top: -10px;
+
+        .week {
+          height: 23px;
+          width: 100%;
+          position: relative;
+
+          &:first-child {
+            border-left: 3px solid #218dc6;
+          }
+
+          .day {
+            width: 100%;
+            height: 13px;
+            cursor: pointer;
+            position: relative;
+
+            .tooltip {
+              top: 140%;
+              left: 70px;
+            }
+
+            &:hover > .tooltip {
+              display: block;
+            }
+
+            &:after {
+              content: '';
+              position: absolute;
+              width: 1px;
+              height: 5px;
+              background-color: #218dc6;
+              right: 0;
+              top: -5px;
+            }
+
+            &:hover:before {
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 13px;
+              background-color: rgba(0, 0, 0, .1);
+            }
+
+            &:nth-child(7n+7):after {
+              width: 3px;
+              height: 23px;
+              top: -5px;
+            }
+          }
+
+          .start-date, .end-date {
+            font: 10px 'Open Sans';
+            position: absolute;
+          }
+
+          .start-date {
+            bottom: -15px;
+            left: 3px;
+          }
+
+          .end-date {
+            bottom: -15px;
+            right: 7px;
+          }
+        }
+      }
+    }
+
+    .timeline-calendar {
+      width: 55px;
+      position: relative;
+
+      .date-pick {
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 10px;
+        right: 0;
+        z-index: -1;
+      }
+
+      .mat-datepicker-popup {
+        position: absolute;
+        right: 0;
+      }
+
+      img {
+        cursor: pointer
+      }
+    }
+  }
+}

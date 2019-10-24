@@ -1,0 +1,183 @@
+<section id="bulk-input">
+  <div class="container">
+    <mat-card fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between" class="filter-nav">
+      <!--Территория-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Территория</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>г. Пермь</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+          <p>
+            <span>Центральный район</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+          <p>
+            <span>Центральный район</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+          <p>
+            <span>г. Пермь</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+      <!--Образовательное учреждение-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Образовательное учреждение</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>Школа №74</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+          <p>
+            <span>Гимназия №23</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+      <!--Группа риска СОП-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Группа риска СОП</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+        <div class="filter-nav_choice">
+          <p>
+            <span>Высокая</span>
+            <img src="assets/images/close.png" alt="">
+          </p>
+        </div>
+      </div>
+      <!--Поиск по фамилии-->
+      <div class="filter-nav-item">
+        <div class="filter-nav-input">
+          <mat-form-field class="input-form" appearance="outline">
+            <mat-label>Поиск по фамилии</mat-label>
+            <input matInput placeholder="">
+            <img matSuffix src="assets/images/search.png" alt="">
+          </mat-form-field>
+        </div>
+      </div>
+      <!--Кнопка поиска-->
+      <div class="filter-nav_item-btn">
+        <button mat-flat-button class="btn" color="primary">Поиск</button>
+        <p>Расширенный поиск</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="user_full-table_wrap">
+      <div fxLayoutAlign="space-between" class="tool-panel">
+        <div fxLayoutAlign="space-around center" class="last-edit">
+          <img src="assets/images/icon_last-redact.png" alt="">
+          <p>{{editEnable ? 'Внесены изменение' : 'Последнее редактирование'}}: 31.10.2018</p>
+        </div>
+        <div *ngIf="editEnable" class="comment">
+          <button mat-button [disabled]="!cellId" (click)="openDialog()">
+            <img src="assets/images/comment.png" alt="">
+          </button>
+        </div>
+        <div class="calendar">
+          <mat-form-field appearance="outline" class="input-form date-picker">
+            <input matInput [matDatepicker]="picker" placeholder="">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div *ngIf="!editEnable" class="download">
+          <img src="assets/images/download.png" alt="">
+        </div>
+        <div *ngIf="!editEnable" class="print">
+          <img src="assets/images/print.png" alt="">
+        </div>
+        <div *ngIf="!editEnable" class="excel">
+          <img src="assets/images/excel.png" alt="">
+        </div>
+        <div fxLayoutGap="10px" class="numbers">
+          <span>Кол-во записей: 0</span>
+          <mat-form-field appearance="outline" class="input-form select-form">
+            <mat-select placeholder="">
+              <mat-option value="0">0</mat-option>
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span>из 0</span>
+        </div>
+        <div fxLayoutGap="10px" class="numbers-2">
+          <span>Кол-во:</span>
+          <mat-form-field appearance="outline" class="input-form select-form">
+            <mat-select placeholder="">
+              <mat-option value="0">0</mat-option>
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="edit-btn">
+          <ng-container *ngIf="!editEnable">
+            <button mat-flat-button class="btn" color="primary" (click)="editMode(true)">Редактировать</button>
+          </ng-container>
+          <ng-container *ngIf="editEnable">
+            <div fxLayoutAlign="space-between center" fxLayoutGap="20px">
+              <button mat-flat-button class="btn" color="accent" (click)="editMode(false)">Сохранить</button>
+              <p (click)="editMode(false)">Отменить</p>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--Таблица массовый ввод-->
+      <div id="table-mass">
+        <table mat-table [dataSource]="dataSource" class="table-mass">
+          <ng-container *ngFor="let row of displayedColumns; let i=index">
+
+            <!--Чекбоксы-->
+            <ng-container *ngIf="editEnable && row === 'select'">
+              <ng-container [matColumnDef]="row">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox appTableRowSelect></mat-checkbox>
+                </td>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="row !== 'select'" [matColumnDef]="row">
+              <th mat-header-cell *matHeaderCellDef class="rotate"> <div><p>{{row}}</p></div>  </th>
+              <td mat-cell *matCellDef="let element;">
+                <ng-container *ngIf="element[row].comment">
+                  <img src="assets/images/comment-1.png" alt="">
+                  <span class="tooltip">{{element[row].comment}}</span>
+                </ng-container>
+                <p *ngIf="row === 'fullName'">{{element[row].name}}</p>
+                <label *ngIf="(row !== 'fullName') || (row !== 'select' && row !== 'fullName')"
+                       [id]="element[row].id">
+
+                  <input *ngIf="editEnable" (change)="onCellClick($event)" type="checkbox"><i></i>
+                </label>
+              </td>
+            </ng-container>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </div>
+</section>

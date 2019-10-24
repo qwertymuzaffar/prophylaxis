@@ -1,0 +1,90 @@
+<section id="indicator">
+  <div class="timeline">
+    <app-timeline *ngIf="!editEnable"></app-timeline>
+  </div>
+  <div fxLayoutAlign="flex-end" class="tool-panel">
+    <div class="download">
+      <img src="assets/images/download.png" alt="">
+    </div>
+    <div class="print">
+      <img src="assets/images/print.png" alt="">
+    </div>
+    <div class="excel">
+      <img src="assets/images/excel.png" alt="">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="numbers">
+      <span>Кол-во записей: 0</span>
+      <mat-form-field appearance="outline" class="input-form select-form">
+        <mat-select placeholder="">
+          <mat-option value="0">0</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span>из 0</span>
+    </div>
+    <div fxLayoutGap="10px" fxLayoutAlign="space-between center" class="numbers-2">
+      <span>Кол-во:</span>
+      <mat-form-field appearance="outline" class="input-form select-form">
+        <mat-select placeholder="">
+          <mat-option value="0">0</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="edit-btn" fxLayoutAlign="center center">
+      <ng-container *ngIf="!editEnable">
+        <button mat-flat-button class="btn" color="primary" (click)="editMode(true)">Редактировать</button>
+      </ng-container>
+      <ng-container *ngIf="editEnable">
+        <div fxLayoutAlign="space-between center" fxLayoutGap="20px">
+          <button mat-flat-button class="btn" color="accent" (click)="editMode(false)">Сохранить</button>
+          <p (click)="editMode(false)">Отменить</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="indicator-table">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Индикатор, выявленный у несовершеннолетнего -->
+      <ng-container matColumnDef="indicator">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Индикатор, выявленный у несовершеннолетнего </th>
+        <td mat-cell *matCellDef="let element"> {{element.indicator}} </td>
+      </ng-container>
+
+      <!-- Кратко -->
+      <ng-container matColumnDef="short">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Кратко </th>
+        <td mat-cell *matCellDef="let element"> {{element.short}} </td>
+      </ng-container>
+
+      <!-- Комментарий -->
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Комментарий </th>
+        <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+      </ng-container>
+
+      <!-- Баллы -->
+      <ng-container matColumnDef="points">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header [hidden]="editEnable"> Баллы </th>
+        <td mat-cell *matCellDef="let element" [hidden]="editEnable"> {{element.points}} </td>
+      </ng-container>
+
+      <!-- Checkbox Column -->
+      <ng-container *ngIf="editEnable">
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox appTableRowSelect color="primary"></mat-checkbox>
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</section>
